@@ -31,6 +31,7 @@ trading_bot/
   logs/
     market_order.log
     limit_order.log
+    stop_market_order.log
   cli.py
   .env.example
   README.md
@@ -113,6 +114,7 @@ python cli.py \
 ```bash
 python cli.py --symbol BTCUSDT --side BUY --order-type MARKET --quantity 0.001 --dry-run --log-file logs/market_order.log
 python cli.py --symbol BTCUSDT --side SELL --order-type LIMIT --quantity 0.001 --price 90000 --dry-run --log-file logs/limit_order.log
+python cli.py --symbol BTCUSDT --side SELL --order-type STOP_MARKET --quantity 0.001 --stop-price 85000 --dry-run --log-file logs/stop_market_order.log
 ```
 
 ## Output Behavior
@@ -145,11 +147,14 @@ Or run all dry-run scenarios in one command:
 
 After setting valid keys in `.env`, run the same commands **without** `--dry-run`.
 
+> Note: Binance Futures enforces minimum notional on orders. If you get code `-4164`, increase quantity or price.
+
 ### 3) View logs
 
 ```bash
 cat logs/market_order.log
 cat logs/limit_order.log
+cat logs/stop_market_order.log
 tail -f logs/trading_bot.log
 ```
 
@@ -173,6 +178,9 @@ python cli.py --help
 
 ## Notes for Evaluators
 
-- `logs/market_order.log` and `logs/limit_order.log` are included as assignment deliverables.
-- They are generated via `--dry-run` in this repository environment where credentials are not present.
-- Run the same commands without `--dry-run` in your testnet environment to place actual orders.
+- Required deliverables are included: `logs/market_order.log` and `logs/limit_order.log`.
+- Logs in this repository were updated using real Binance Futures Testnet API runs.
+- Real run evidence in logs includes:
+  - `LIMIT` order success: `orderId = 13002596023`
+  - `MARKET` order success: `orderId = 13002596824`
+- Bonus log is also included: `logs/stop_market_order.log`.
