@@ -1,0 +1,4 @@
+2026-03-28 22:26:50 | INFO | bot.orders | Order request summary | {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-03-28 22:26:50 | INFO | bot.orders | Dry run mode enabled: Binance API call skipped
+2026-03-28 22:38:44 | INFO | bot.orders | Order request summary | {'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001'}
+2026-03-28 22:38:44 | INFO | bot.orders | Dry run mode enabled: Binance API call skipped
